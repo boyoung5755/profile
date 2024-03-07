@@ -92,12 +92,6 @@
 			<version>1.2</version>
 		</dependency>
 		
-		<!-- Layout template 지원 -->
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-jsp</artifactId>
-			<version>3.0.8</version>
-		</dependency>
 
 		<!-- Marshalling 지원 -->
 		<dependency>

@@ -26,14 +26,6 @@
 		p:order="1"
 	/>
 	
-	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" 
-		p:definitions="/WEB-INF/tiles/*-tiles.xml"
-		p:preparerFactoryClass="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory"
-	/>
-	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" 
-		p:order="2"
-	/>
-	
 	<context:component-scan base-package="profile" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
