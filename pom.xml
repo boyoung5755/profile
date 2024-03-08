@@ -111,8 +111,24 @@
 		<dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
-		    <version>8.0.26</version>
+		    <version>8.0.25</version>
 		</dependency>
+		<dependency> 
+        <groupId>commons-dbcp</groupId> 
+	        <artifactId>commons-dbcp</artifactId> 
+	        <version>1.4</version> 
+       	</dependency>
+       	
+    	
+    	<!-- spring-test 테스트 용도 패키지-->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>${org.springframework-version}</version>
+		    <scope>test</scope>
+		</dependency>
+       	
+
 		
 		<!-- Connection Pooling 지원 -->
 		<dependency>
@@ -133,6 +149,7 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.5.13</version>
 		</dependency>
+
 
 		<!-- Java Bean 지원 -->
 		<dependency>
@@ -201,32 +218,5 @@
 		</dependency>
 
 
-		<!-- 파일 업로드 && 다운로드 -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.15.0</version>
-		</dependency>
-
-
-		<!-- 단위 테스트 지원 -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.10.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${org.springframework-version}</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 </project>

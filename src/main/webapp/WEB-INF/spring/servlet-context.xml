@@ -25,7 +25,6 @@
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" 
 		p:order="1"
 	/>
-	
 	<context:component-scan base-package="profile" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
