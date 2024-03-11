@@ -8,10 +8,20 @@
 	<definition name="abstractDef" template="/WEB-INF/views/template.jsp">
 		<put-attribute name="title" value="보영이" />
 		<put-attribute name="preScript" value="/includee/preScript.jsp"/>
+		<put-attribute name="cssScript" value="/includee/cssScript.jsp"/>
 	</definition>
 	
 	<definition name="/common/*" extends="abstractDef">
 		<put-attribute name="content" value="/WEB-INF/views/common/{1}.jsp"  />
 	</definition>
 	
+	<definition name="/guestbook/*" extends="abstractDef">
+		<put-attribute name="content" value="/WEB-INF/views/guestbook/{1}.jsp"  />
+	</definition>
+	<definition name="/gallery/*" extends="abstractDef">
+		<put-attribute name="content" value="/WEB-INF/views/gallery/{1}.jsp"  />
+	</definition>
+	<definition name="/myStack/*" extends="abstractDef">
+		<put-attribute name="content" value="/WEB-INF/views/myStack/{1}.jsp"  />
+	</definition>
 </tiles-definitions>     

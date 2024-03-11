@@ -16,17 +16,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * </PRE>
  */
 @Controller
-@RequestMapping("/common")
+@RequestMapping
 public class ViewController {
 	
+	@GetMapping("common/profile")
+	public String profile(){return "/common/profile";}
 	
-	@GetMapping("/menu")
-	public String menu() {
-		return "common/menu";
-	}
+	@GetMapping("guestbook")
+	public String guestbookPage(){return "/guestbook/guestbookHome";}
+	
+	@GetMapping("gallery")
+	public String galleryPage(){return "/gallery/galleryHome";}
+	
+	@GetMapping("myStack")
+	public String myStackPage(){return "/stack/stackHome";}
+	
+	@GetMapping("common/menu")
+	public String menu() {return "/common/menu";}
 
-	@GetMapping("/home")
-	public String home() {
-		return "common/home";
-	}
+	@GetMapping("common/home")
+	public String home() {return "/common/home";}
 }

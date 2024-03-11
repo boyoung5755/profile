@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import profile.common.ServiceResult;
+import profile.common.Utils;
 import profile.guestbook.service.GuestbookService;
 import profile.vo.GuestbookVO;
 
@@ -39,18 +38,7 @@ public class GuestbookController {
 	@Inject
 	private GuestbookService service;
 	
-	
-	//성공실패 보내주기
-	public Map<String, String> sendResult(ServiceResult result){
-		Map<String, String> map = new HashMap<>();
-		
-		if(result.equals(ServiceResult.OK)) {
-			map.put("success","Y");
-		}else {
-			map.put("success","N");
-		}
-		return map;
-	}
+	private Utils utils;
 	
 	
 	//방명록 등록하기
@@ -59,7 +47,7 @@ public class GuestbookController {
     	@ModelAttribute("guestbook") GuestbookVO gbVO
     	) {
         Map<String, String> map = new HashMap<>();
-        sendResult(service.createGB(gbVO));
+        utils.sendResult(service.createGB(gbVO));
         return map;
     }
 	
@@ -70,7 +58,7 @@ public class GuestbookController {
     	@ModelAttribute("guestbook") GuestbookVO gbVO
     	) {
         Map<String, String> map = new HashMap<>();
-        sendResult(service.modifyGB(gbVO));
+        utils.sendResult(service.modifyGB(gbVO));
         return map;
     }
 	
@@ -81,7 +69,7 @@ public class GuestbookController {
     	@ModelAttribute("guestbook") GuestbookVO gbVO
     	) {
         Map<String, String> map = new HashMap<>();
-        sendResult(service.removeGB(gbVO));
+        utils.sendResult(service.removeGB(gbVO));
         return map;
     }
 	

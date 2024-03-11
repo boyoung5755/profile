@@ -10,6 +10,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <style>
     body {
@@ -27,6 +28,7 @@
         color: white;
     }
     
+ 
     
 </style>
 
@@ -34,4 +36,6 @@
     <h2>김보영</h2> <!-- 이 부분에 사용자 이름이 들어갑니다. -->
     <button type="button" class="btn btn-secondary" onclick="window.location.href='/common/menu'">클릭</button>
 </div>
+
+
 

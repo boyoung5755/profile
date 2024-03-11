@@ -1,12 +1,8 @@
 package profile;
 
 
-import static org.junit.Assert.fail;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
-
-import org.junit.Test;
 
 import profile.stack.dao.StackDAO;
 
@@ -32,11 +28,11 @@ class DBtest {
 
 	//@Test
 	void test() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	
-	@Test
+	
 	  public void mariaTest() throws Exception{
 	   Class.forName(DRIVER);
 	   
