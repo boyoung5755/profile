@@ -1,8 +1,17 @@
 package profile.common.controller;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.extern.slf4j.Slf4j;
+import profile.stack.service.StackService;
+import profile.vo.StackVO;
 
 /**
  * 프로그램 설명 -> 단순 뷰를 호출하는 controller들
@@ -17,7 +26,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping
+@Slf4j
 public class ViewController {
+	
+	@Inject
+	private StackService service;
 	
 	@GetMapping("common/profile")
 	public String profile(){return "/common/profile";}
@@ -28,12 +41,21 @@ public class ViewController {
 	@GetMapping("gallery")
 	public String galleryPage(){return "/gallery/galleryHome";}
 	
-	@GetMapping("myStack")
-	public String myStackPage(){return "/stack/stackHome";}
+	@GetMapping("stack")
+	public String myStackPage(Model model){
+		
+		//나의 스택리스트 보내기
+		List<StackVO> sVO = service.retrieveStackList();
+		model.addAttribute("stackList",sVO);
+		log.info("stackList", sVO);
+		
+		return "/stack/stackHome";
+	}
 	
 	@GetMapping("common/menu")
 	public String menu() {return "/common/menu";}
 
 	@GetMapping("common/home")
 	public String home() {return "/common/home";}
+	
 }

@@ -31,7 +31,7 @@
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-danger menu"
-                        	onclick="window.location.href='/myStack'">기술스택</button>
+                        	onclick="window.location.href='/stack'">기술스택</button>
                     </div>
                 </div>
             </div>

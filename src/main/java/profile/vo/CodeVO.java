@@ -22,6 +22,7 @@ public class CodeVO {
 	private int codeNo;
 	private int stackNo;
 	private String codeContent;
+	private String codeTitle;
 	
 
 }

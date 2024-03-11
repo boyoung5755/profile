@@ -2,9 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="profile.stack.dao.StackDAO">
 
+	<select id="selectStackList" resultMap="stackList">
+		SELECT
+			STACK_NO
+			, STACK_NAME
+		FROM STACK
+	</select>
 	
-	<select id="testselect" resultType="StackVO">
+	
+	<resultMap type="StackVO" id="stackList" autoMapping="true">
+		<id property="stackNo" column="STACK_NO"/>
+		<collection property="codeList" ofType="CodeVO" autoMapping="true">
+			<id property="codeNo" column="CODE_NO"/>
+		</collection>
+	</resultMap>
+	
+	<select id="testselect" resultMap="stackList">
 		SELECT * FROM STACK
 	</select>
-
+	
 </mapper>

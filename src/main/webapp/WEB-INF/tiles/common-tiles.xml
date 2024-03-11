@@ -21,7 +21,7 @@
 	<definition name="/gallery/*" extends="abstractDef">
 		<put-attribute name="content" value="/WEB-INF/views/gallery/{1}.jsp"  />
 	</definition>
-	<definition name="/myStack/*" extends="abstractDef">
-		<put-attribute name="content" value="/WEB-INF/views/myStack/{1}.jsp"  />
+	<definition name="/stack/*" extends="abstractDef">
+		<put-attribute name="content" value="/WEB-INF/views/stack/{1}.jsp"  />
 	</definition>
 </tiles-definitions>     

@@ -25,10 +25,16 @@ import profile.vo.StackVO;
 public class StackServiceImpl  implements StackService{
 	
 	private final StackDAO dao;
+	
 
 	@Override
 	public List<StackVO> testselect() {
 		return dao.testselect();
 	}
 
+	@Override
+	public List<StackVO> retrieveStackList() {
+		return dao.selectStackList();
+	}
+	
 }
