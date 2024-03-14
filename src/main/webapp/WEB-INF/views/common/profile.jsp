@@ -88,8 +88,6 @@
 	
 	<script type="text/javascript">
 	
-	const stackNameList =[];
-	const chartDataList = [];
 	
 	function fn_getChartData(){
 	      

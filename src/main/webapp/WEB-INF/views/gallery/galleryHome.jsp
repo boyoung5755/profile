@@ -36,17 +36,70 @@
     	<c:forEach items="${galleryFileList}" var="gallery">
     		<c:if test="${fn:startsWith(gallery.fileMime,'image/')}">
 	    		<img alt="" src="/image/show?fileNo=${gallery.fileNo}"
-	    			width="300px" height="300px">
+	    			width="300px" height="300px" class="draggable" draggable="true">
     		</c:if>
     		<c:if test="${! fn:startsWith(gallery.fileMime,'image/')}">
-	    		<img alt="" src="/resources/images/document.png" width="300px" height="300px">
+	    		<img alt="" src="/resources/images/document.png" width="300px" height="300px" 
+	    		class="draggable" draggable="true">
     		</c:if>
     		<c:if test="${fn:startsWith(gallery.fileMime,'video/')}">
     			<video src="/video?fileNo=${gallery.fileNo}" width="300px" height="300px"
-    				autoplay="autoplay" muted="muted" loop="loop"
+    				autoplay="autoplay" muted="muted" loop="loop" class="draggable" draggable="true"
     			></video>
     		</c:if>	
     	</c:forEach>
     </div>
     
 </div>
+
+
+<script>
+//ㅁㅁㅁㅁ드래그앤드랍ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+const draggables = document.querySelectorAll(".draggable");
+const galleryArea = document.querySelectorAll("#galleryArea");
+
+
+draggables.forEach(draggable => {
+	  draggable.addEventListener("dragstart", () => {
+	    draggable.classList.add("dragging");
+	  });
+
+	  draggable.addEventListener("dragend", () => {
+	    draggable.classList.remove("dragging");
+	  });
+	});
+
+galleryArea.forEach(container => {
+	  container.addEventListener("dragover", e => {
+	    e.preventDefault();
+	    const afterElement = getDragAfterElement(container, e.clientX);
+	    const draggable = document.querySelector(".dragging");
+	    if (afterElement === undefined) {
+	      container.appendChild(draggable);
+	    } else {
+	      container.insertBefore(draggable, afterElement);
+	    }
+	  });
+	});
+
+	function getDragAfterElement(container, x) {
+	  const draggableElements = [
+	    ...container.querySelectorAll(".draggable:not(.dragging)"),
+	  ];
+
+	  return draggableElements.reduce(
+	    (closest, child) => {
+	      const box = child.getBoundingClientRect();
+	      const offset = x - box.left - box.width / 2;
+	      // console.log(offset);
+	      if (offset < 0 && offset > closest.offset) {
+	        return { offset: offset, element: child };
+	      } else {
+	        return closest;
+	      }
+	    },
+	    { offset: Number.NEGATIVE_INFINITY },
+	  ).element;
+	}
+
+</script>
