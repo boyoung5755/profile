@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="profile.info.dao.InfoDAO">
+
+	<select id="selectProfileImg" resultType="FileVO">
+		select *
+		from file
+		where show_profileimg="Y"
+	</select>
+	
+	
+	<update id="changeShow">
+		UPDATE file
+		SET show_profileimg = 'N'
+		WHERE show_profileimg = 'Y'
+	</update>
+	
+	<select id="getChart" resultType="CodeVO">
+		SELECT 
+			COUNT(*) AS value
+			, (
+				SELECT  S.STACK_NAME
+				FROM STACK S
+				WHERE S.STACK_NO = C.STACK_NO
+			) AS name
+		FROM CODE C
+		LEFT OUTER JOIN STACK S
+		ON S.STACK_NO = C.CODE_NO
+		GROUP BY C.STACK_NO
+	</select>
+
+
+</mapper>

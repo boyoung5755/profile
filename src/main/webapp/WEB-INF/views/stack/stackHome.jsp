@@ -10,6 +10,10 @@
 <script src="/resources/js/app/stack.js"></script>
 
 <div class="container">
+	<c:if test="${ sessionScope.role eq 'admin'}">
+		<button type="button" class="btn btn-secondary" onclick="fn_addNewCodeForm()">등록하기</button>
+		<hr class="mb-3">
+	</c:if>
     <div class="row">
         <div class="col-3">
             기술목록
@@ -25,7 +29,7 @@
         <div class="col-3">
             코드제목
             <hr>
-            <div id="codeNameArea">
+            <div id="codeTitleArea">
             </div>
         </div> 
         <div class="col-6">
@@ -33,6 +37,9 @@
             <hr>
             <div id="codeDetailArea">
             </div>
+            <c:if test="${ sessionScope.role eq 'admin'}">
+            <div id="buttonArea"></div>
+            </c:if>
         </div>  
     </div>
 </div>

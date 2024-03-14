@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="profile.gallery.dao.GalleryDAO">
+	
+	<insert id="insertGallery" parameterType="GalleryVO">
+		INSERT INTO gallery(
+			IMG_RDATE
+			, IMG_DEL
+			, file_code
+		)
+		VALUES(
+			#{imgRdate}
+			, #{imgDel}
+			, #{fileCode}
+		)
+	</insert>
+	
+	<resultMap type="GalleryVO" id="galleyMap" autoMapping="true">
+		<id property="imgNo" column="IMG_NO"/>
+		<collection property="fileList" ofType="FileVO" autoMapping="true">
+			<id property="fileNo" column="FILE_NO"/>
+		</collection>
+	</resultMap>
+	
+	
+	<select id="selectGalleryList" resultType="FileVO">
+		SELECT 
+			F.FILE_CODE
+			, F.FILE_FANCYSIZE
+			, F.FILE_MIME
+			, F.FILE_NAME
+			, F.FILE_NO
+			, F.FILE_SIZE
+			, F.FILE_SN
+			, F.FILE_RDATE
+			, F.FILE_PATH
+		FROM GALLERY G
+		LEFT OUTER JOIN FILE F
+		ON F.FILE_CODE = G.FILE_CODE
+		ORDER BY F.FILE_RDATE DESC
+	</select>
+
+</mapper>

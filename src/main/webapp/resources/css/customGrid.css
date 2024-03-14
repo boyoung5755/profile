@@ -1,0 +1,5 @@
+@charset "UTF-8";
+.tui-grid-header .tui-grid-cell-header {
+  background-color: #3498db;
+  color: white;
+}

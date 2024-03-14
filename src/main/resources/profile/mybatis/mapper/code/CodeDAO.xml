@@ -2,4 +2,68 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="profile.stack.dao.CodeDAO">
 
+
+	<select id="selectCodeTitleList" resultType="CodeVO" parameterType="int">
+		SELECT
+			CODE_TITLE
+			, CODE_NO
+			, CODE_DEl
+			, CODE_IMAGE
+		FROM CODE
+		WHERE STACK_NO = #{stackNo}
+	</select>
+	
+	
+	<select id="selectCodeDetail" resultType="CodeVO" parameterType="int">
+		SELECT 
+			CODE_CONTENT
+			,CODE_NO
+			,CODE_TITLE
+			,STACK_NO
+			,CODE_IMAGE
+			,FILE_CODE
+		FROM CODE
+		WHERE CODE_NO = #{codeNo}
+	</select>
+
+
+	<insert id="insertCode" parameterType="CodeVO">
+	
+		INSERT INTO CODE(
+			CODE_CONTENT
+			,CODE_TITLE
+			,CODE_DEl
+			,CODE_IMAGE
+			,FILE_CODE
+			,STACK_NO
+			)
+		VALUES(
+			#{codeContent}
+			,#{codeTitle}
+			,"N"
+			,COALESCE(#{codeImage}, '')
+			,#{fileCode}
+			,#{stackNo}
+			)
+	</insert>
+	
+	<update id="updateCode" parameterType="CodeVO">
+		UPDATE code
+		SET 
+			STACK_NO=#{stackNo}
+			, CODE_CONTENT=#{codeContent}
+			, CODE_TITLE=#{codeTitle}
+			, CODE_IMAGE=COALESCE(#{codeImage}, '')
+		WHERE CODE_NO=#{codeNo}
+	</update>
+	
+	<update id="deleteCode" parameterType="int">
+		UPDATE code
+		SET 
+			CODE_DEL="Y"
+		WHERE CODE_NO=#{codeNo}
+	</update>
+	
+	
+	
 </mapper>

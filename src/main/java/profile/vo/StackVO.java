@@ -23,6 +23,7 @@ public class StackVO {
 	
 	private int stackNo;
 	private String stackName;
+	
 
 	
 	//n:1관계

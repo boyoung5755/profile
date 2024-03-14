@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import profile.common.ServiceResult;
 import profile.vo.CodeVO;
 
 /**
@@ -23,5 +24,13 @@ import profile.vo.CodeVO;
 public interface CodeDAO {
 
 	List<CodeVO> selectCodeTitleList(@Param("stackNo")int stackNo);
+
+	CodeVO selectCodeDetail(@Param("codeNo")int codeNo);
+
+	int insertCode(CodeVO cVO);
+
+	int updateCode(CodeVO cVO);
+
+	int deleteCode(int codeNo);
 
 }

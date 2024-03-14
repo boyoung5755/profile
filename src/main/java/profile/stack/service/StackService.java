@@ -2,6 +2,7 @@ package profile.stack.service;
 
 import java.util.List;
 
+import profile.vo.CodeVO;
 import profile.vo.StackVO;
 
 /**
@@ -29,5 +30,17 @@ public interface StackService {
 	 * @return
 	 */
 	public List<StackVO> retrieveStackList();
+
+	
+	/**
+	* 메서드 설명 ->  스택과 코드의 리스트
+	* @Method Name  	: retrieveStackCodeList
+	* @date   			: 2024. 3. 13.
+	* @author   		: boyoung
+	* @version     	: 1.0
+	* ----------------------------------------
+	* @return
+	*/
+	public List<CodeVO> retrieveStackCodeList();
 
 }

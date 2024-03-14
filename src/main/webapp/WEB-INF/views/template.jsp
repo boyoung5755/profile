@@ -57,8 +57,7 @@
   cursor: pointer;
 }
     
-    
-    
+
     
     </style>
     <script>
@@ -96,12 +95,16 @@ $(document).ready(function(){
 </head>
 <body>
 	<c:if test="${ empty sessionScope.role }">
-		<button id="adminBtn" class="btn btn-secondary">관리자</button>
+		<button id="adminBtn" class="btn btn-secondary mt-3">관리자</button>
 	</c:if>
 	<c:if test="${sessionScope.role eq 'admin'}">
 		<span>관리자 로그인중</span>
-		<button id="logout" class="btn btn-secondary" onclick="fn_logout()">연결해제</button>
+		<button id="logout" class="btn btn-secondary mt-3" onclick="fn_logout()">연결해제</button>
 	</c:if>
+	<button type="button" class="btn btn-secondary mt-3" onclick="location.href='/common/menu'">HOME</button>
+    <hr class="mb-3"></hr>
+    
+    
     <tiles:insertAttribute name="content" />
     
     <!-- 모달 창 -->

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="profile.stack.dao.StackDAO">
 
-	<select id="selectStackList" resultMap="stackList">
+	<select id="selectStackList" resultType="StackVO">
 		SELECT
 			STACK_NO
 			, STACK_NAME
@@ -17,8 +17,22 @@
 		</collection>
 	</resultMap>
 	
-	<select id="testselect" resultMap="stackList">
-		SELECT * FROM STACK
+<!-- 	<select id="testselect" resultMap="stackList"> -->
+<!-- 		SELECT * FROM STACK -->
+<!-- 	</select> -->
+
+
+	<select id="selectStackCodeList" resultType="CodeVO">
+		SELECT 
+			S.STACK_NAME AS stackName
+			, S.STACK_NO
+			, C.CODE_TITLE
+			, C.CODE_CONTENT
+			, C.CODE_IMAGE
+			, C.CODE_DEL
+		FROM STACK S
+		LEFT OUTER JOIN CODE C
+		ON S.STACK_NO = C.STACK_NO
 	</select>
 	
 </mapper>

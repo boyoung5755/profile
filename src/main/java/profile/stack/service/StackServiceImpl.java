@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import profile.stack.dao.StackDAO;
+import profile.vo.CodeVO;
 import profile.vo.StackVO;
 
 /**
@@ -35,6 +36,12 @@ public class StackServiceImpl  implements StackService{
 	@Override
 	public List<StackVO> retrieveStackList() {
 		return dao.selectStackList();
+	}
+
+	@Override
+	public List<CodeVO> retrieveStackCodeList() {
+		// TODO Auto-generated method stub
+		return dao.selectStackCodeList();
 	}
 	
 }

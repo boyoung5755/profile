@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import profile.vo.CodeVO;
 import profile.vo.StackVO;
 
 /**
@@ -24,5 +25,7 @@ public interface StackDAO {
 	public List<StackVO> testselect();
 
 	public List<StackVO> selectStackList();
+
+	public List<CodeVO> selectStackCodeList();
 
 }
