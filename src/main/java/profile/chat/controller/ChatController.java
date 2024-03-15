@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.util.HtmlUtils;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import profile.chat.Greeting;
 import profile.chat.HelloMessage;
 import profile.chat.service.ChatService;
@@ -28,19 +29,17 @@ import profile.common.Utils;
  * </PRE>
  */
 
-
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class ChatController {
 	
-	@Inject
-	private ChatService service;
-	
-	private Utils utils;
+
 	
     @MessageMapping("/enter")
     @SendTo("/topic/greetings")
     public Greeting enter(HelloMessage message, StompHeaderAccessor session) throws Exception {
+    	log.info("입장>>>>>>>>>>>>>>>>>"+session.getSessionAttributes().get("name"));
         return new Greeting(HtmlUtils.htmlEscape(session.getSessionAttributes().get("name") + "님께서 입장하셨습니다!"));
     }
     @MessageMapping("/exit")
@@ -58,7 +57,9 @@ public class ChatController {
         String currentTime = format.format(now);
 
         System.out.println(currentTime);
-        return new Greeting(HtmlUtils.htmlEscape(session.getSessionAttributes().get("chat") + " : "+message.getChat())+"["+currentTime+"]");
+        log.info("대화>>>>>>>>>>>>>>>>>"+session.getSessionAttributes().get("chat") + " : "+message.getChat());
+        return new Greeting(HtmlUtils.htmlEscape(session.getSessionAttributes().get("chat") + " : "+message.getChat()+"["+currentTime+"]"));
     }
+    
 
 }

@@ -8,14 +8,21 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script src="https://cdn.jsdelivr.net/webjars/sockjs-client/1.0.2/sockjs.min.js"></script>
-<script src="https://cdn.jsdelivr.net/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
+
 
 <script src="/resources/js/app/chat.js"></script>
+<script src="/resources/js/app/gb.js"></script>
 
-<!-- 채팅부분 -->
 <div>
 <div id="main-content" class="container">
+	<!-- 방명록 -->
+	<label for="connect">방명록</label>
+	<div id="gbArea">
+	</div>
+	
+
+
+	<!-- 채팅부분 -->
     <div class="row">
         <div class="col-md-6">
             <form class="form-inline">

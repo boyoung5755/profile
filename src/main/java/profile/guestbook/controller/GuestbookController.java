@@ -1,6 +1,7 @@
 package profile.guestbook.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -39,6 +40,16 @@ public class GuestbookController {
 	private GuestbookService service;
 	
 	private Utils utils;
+	
+	
+	//방명록 목록
+	@PostMapping("/retrieveGB")
+    public Map<String, List<GuestbookVO>> retrieveGB(
+    	) {
+        Map<String, List<GuestbookVO>> map = new HashMap<>();
+        map.put("gbList", service.retrieveGB());
+        return map;
+    }
 	
 	
 	//방명록 등록하기

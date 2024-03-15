@@ -10,6 +10,12 @@
  * </PRE>
  */
 
+
+
+
+
+
+
 //파일 등록
 function fn_galleryUpload(){
 	

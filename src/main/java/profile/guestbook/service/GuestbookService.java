@@ -26,6 +26,6 @@ public interface GuestbookService {
 
 	public ServiceResult removeGB(GuestbookVO gbVO);
 
-	public List<GuestbookVO> retrieveGB(GuestbookVO gbVO);
+	public List<GuestbookVO> retrieveGB();
 
 }

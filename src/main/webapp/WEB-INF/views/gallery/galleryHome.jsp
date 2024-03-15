@@ -44,7 +44,7 @@
     		</c:if>
     		<c:if test="${fn:startsWith(gallery.fileMime,'video/')}">
     			<video src="/video?fileNo=${gallery.fileNo}" width="300px" height="300px"
-    				autoplay="autoplay" muted="muted" loop="loop" class="draggable" draggable="true"
+    				autoplay="autoplay" muted="muted" loop="loop" class="draggable" draggable="true" controls 
     			></video>
     		</c:if>	
     	</c:forEach>

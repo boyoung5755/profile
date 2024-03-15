@@ -25,6 +25,8 @@
 
 <script src="/resources/js/jquery-3.7.1.min.js"></script>
 <script src="/resources/js/jquery.serializejson.js"></script>
+<script src="https://cdn.jsdelivr.net/webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <!-- <script src="/resources/js/bootstrap.min.js"></script> -->
 
 

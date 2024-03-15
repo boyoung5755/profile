@@ -46,8 +46,9 @@ public class GuestbookServiceImpl implements GuestbookService{
 		return dao.deleteGB(gbVO);
 	}
 
+
 	@Override
-	public List<GuestbookVO> retrieveGB(GuestbookVO gbVO) {
+	public List<GuestbookVO> retrieveGB() {
 		// TODO Auto-generated method stub
 		return dao.selectList();
 	}
