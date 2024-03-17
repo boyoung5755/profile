@@ -47,6 +47,16 @@
 		/>
 	</mvc:interceptors>
 	
+	<mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/stack/codeNew"/>
+            <mvc:exclude-mapping path="/gallery/**"/>
+            <mvc:exclude-mapping path="/common/**"/>
+            <mvc:exclude-mapping path="/gb/**"/>
+            <mvc:exclude-mapping path="/stack/**"/>
+            <bean class="profile.filter.CustomIntercepter" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 	
 </beans>
 

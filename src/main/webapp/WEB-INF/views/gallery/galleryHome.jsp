@@ -22,14 +22,15 @@
 
 <div class="container">
 	<h1>갤러리</h1>
-	
+	<c:if test="${ sessionScope.role eq 'admin'}">
+		
 	<form id="galleryData" enctype="multipart/form-data" >
         <input type="hidden" value="${rndStr}" id="fileCode" name="fileCode"> 
         <input type="file" name="profileFile" multiple="multiple">
         <button type="button" onclick="fn_galleryUpload()">Upload</button>
     </form>
     <hr class="mb-3">
-	
+	</c:if>
 	
 	    
     <div id="galleryArea">
