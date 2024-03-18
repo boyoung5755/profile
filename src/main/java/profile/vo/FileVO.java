@@ -32,6 +32,7 @@ public class FileVO  implements Serializable{
 
 	private MultipartFile profileFile;
 	
+	private int rnum;
 	
 	private String fileCode       ;    //게시판과 파일의 공통코드
 	private String fileName       ;

@@ -51,7 +51,7 @@ public class GalleryServiceImpl implements GalleryService{
 				try {
 					atch.setFileCode(gVO.getFileCode());
 					atch.setFileRdate(LocalDateTime.now());
-					atch.setFilePath("D:"+File.separatorChar+"code");
+					atch.setFilePath("C:"+File.separatorChar+"code");
 					fdao.insertProfileFile(atch);
 					atch.saveTo(codeFiles.getFile());
 				}catch (IOException e) {

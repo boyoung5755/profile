@@ -77,7 +77,7 @@ public class InfoServiceImpl implements InfoService{
 			fVO.setFileSn(UUID.randomUUID().toString());
 			fVO.setFileRdate(LocalDateTime.now());
 			fVO.setShowProfileimg("Y");
-			fVO.setFilePath("D:"+File.separatorChar+"code");
+			fVO.setFilePath("C:"+File.separatorChar+"code");
 			fdao.insertProfileFile(fVO);
 			fVO.saveTo(codeFiles.getFile());
 			

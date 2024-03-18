@@ -10,6 +10,104 @@
  * </PRE>
  */
 
+//파일리스트
+
+$(function(){
+	fn_fileList();
+	
+})
+
+
+//1.페이징 버튼 눌렀을때
+function fn_paging(page){
+	searchForm.page.value = page ;
+	fn_fileList();
+
+}
+
+$(document).on('click','#searchBtn', function(){
+  	fn_fileList();
+})
+
+function fn_fileList(){
+	
+	let formData = $('#searchForm').serialize();
+	
+	let settings = {
+		url : '/file/list',
+		contentType : 'application/json',
+		method : 'get',
+		data : formData,
+		dataType: 'json'
+	};
+	
+	let trTag='';
+	$.ajax(settings).done(function (resp){
+		
+		let pagingFileList = resp.paging.dataList;
+		let simpleCondition = resp.paging.simpleCondition;
+		
+		if(pagingFileList[0] != null){
+			
+			$.each(pagingFileList, function(i,v){
+
+		        if(v.fileNo != null){
+		          trTag +=`
+		            <tr  style="cursor: pointer;">
+		              <td onclick="fn_fileDownload('${v.fileNo}')">${v.fileName}</td>
+		              <td>${v.fileFancysize}</td>
+		              <td>${v.fileRdate}</td>
+		              <td>${v.fileMime}</td>
+		              <td><button type="button" class="btn btn-danger" onclick="fn_removeFile('${v.fileNo}')">삭제</button></td>
+		            </tr> 
+		          `;
+		        }else{
+		          trTag +=`
+		            <tr>
+		              <td colspan='5'>내역 없음</td>
+		            </tr>  
+		          `;
+		        }
+
+        	$('#fileListArea').html(trTag);
+      	});
+
+      	trTag = `
+				<tr>
+					<td colspan="6">
+							<hr class="my-0 mb-3 mt-2">
+						${resp.paging.pagingHTML}
+						<form id="searchForm">
+							<div id ="searchUI" class="row g-3 d-flex justify-content-center">
+								<input type="hidden" name="page" readonly="readonly"/>
+								<input type="hidden" name="listNum" readonly="readonly" value="${resp.paging.listNum}"/>
+								<input type="hidden" name="option" readonly="readonly" value="${resp.paging.option}" id="option"/>
+								<div class="col-auto">
+									<select name="searchType" class="form-select"> 
+										<option value="" >전체</option>
+										<option value="title" ${simpleCondition.searchType == "title" ? 'selected' : ''} >파일이름</option>
+									</select>
+								</div>
+								<div class="col-auto">
+									<input name="searchWord" placeholder="입력하세요" class="form-control" 
+										value="${simpleCondition.searchWord != null ? simpleCondition.searchWord :''}"/>
+								</div>
+								<div class="col-auto">
+									<input type="button" value="검색" id="searchBtn" class="btn btn-primary" />
+								</div>
+							</div>
+						</form>
+					</td>
+				</tr>
+				`;
+        $('#filePaging').html(trTag);
+		}
+		
+	});
+}
+
+
+
  
 //스택이름 클릭시 코드제목 출력ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
 

@@ -17,10 +17,31 @@
 <div class="container">
 	<div id="gridArea">
 	</div>
+
+	
+	<h4 class="mt-4">파일현황</h4>
+
+	<table class="table table-bordered">
+		<thead>
+			<th>파일이름</th>
+			<th>파일크기</th>
+			<th>파일등록일</th>
+			<th>파일타입</th>
+			<th>파일삭제</th>
+		</thead>
+		<tbody id="fileListArea">
+		</tbody>
+		<tfoot id="filePaging">
+		</tfoot>
+		
+	</table>
+	
 </div>
 
 
 <script>
+
+
 // 토스트 그리드 초기화
 let createGrid; // 전역 변수로 변경
 

@@ -1,8 +1,11 @@
 package profile.file.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import profile.vo.FileVO;
+import profile.vo.PaginationInfo;
 
 /**
  * 프로그램 설명
@@ -22,5 +25,9 @@ public interface FileDAO {
 	public int insertProfileFile(FileVO atch);
 
 	public FileVO selectFileName(String fileCode);
+
+	public int selectTotalRecord(PaginationInfo<FileVO> paging);
+
+	public List<FileVO> selectFileList(PaginationInfo<FileVO> paging);
 
 }

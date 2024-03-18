@@ -131,7 +131,7 @@ public class CodeServiceImpl implements CodeService {
 				try {
 					atch.setFileCode(cVO.getFileCode());
 					atch.setFileRdate(LocalDateTime.now());
-					atch.setFilePath("D:"+File.separatorChar+"code");
+					atch.setFilePath("C:"+File.separatorChar+"code");
 					fdao.insertProfileFile(atch);
 					atch.saveTo(codeFiles.getFile());
 				}catch (IOException e) {
