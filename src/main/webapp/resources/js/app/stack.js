@@ -29,6 +29,33 @@ $(document).on('click','#searchBtn', function(){
   	fn_fileList();
 })
 
+function fn_removeFile(fileNo, fileSn){
+	
+	$.ajax({
+		type: "DELETE",
+		url: "/file/removeFile",
+		data:JSON.stringify({
+			'fileNo' : fileNo	
+			, 'fileSn' : fileSn		
+		}),
+		contentType : 'application/json; charset=utf-8',
+		success: function (data) {
+			if(data.success == "Y"){
+				alert("삭제성공");
+				location.href="/stack/manage";
+			}else{
+				alert("삭제실패");
+			}
+		},
+		error: function () {
+			alert("서버오류");
+			
+		}
+	});
+	
+}
+
+
 function fn_fileList(){
 	
 	let formData = $('#searchForm').serialize();
@@ -54,11 +81,11 @@ function fn_fileList(){
 		        if(v.fileNo != null){
 		          trTag +=`
 		            <tr  style="cursor: pointer;">
-		              <td onclick="fn_fileDownload('${v.fileNo}')">${v.fileName}</td>
+		              <td onclick="window.location.href='/file/download?fileNo=${v.fileNo}'">${v.fileName}</td>
 		              <td>${v.fileFancysize}</td>
-		              <td>${v.fileRdate}</td>
+		              <td>${v.changeDate}</td>
 		              <td>${v.fileMime}</td>
-		              <td><button type="button" class="btn btn-danger" onclick="fn_removeFile('${v.fileNo}')">삭제</button></td>
+		              <td><button type="button" class="btn btn-danger" onclick="fn_removeFile('${v.fileNo}','${v.fileSn}')">삭제</button></td>
 		            </tr> 
 		          `;
 		        }else{

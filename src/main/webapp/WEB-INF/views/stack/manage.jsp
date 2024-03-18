@@ -23,11 +23,13 @@
 
 	<table class="table table-bordered">
 		<thead>
-			<th>파일이름</th>
-			<th>파일크기</th>
-			<th>파일등록일</th>
-			<th>파일타입</th>
-			<th>파일삭제</th>
+			<tr>
+				<th>파일이름</th>
+				<th>파일크기</th>
+				<th>파일등록일</th>
+				<th>파일타입</th>
+				<th>파일삭제</th>
+			</tr>
 		</thead>
 		<tbody id="fileListArea">
 		</tbody>

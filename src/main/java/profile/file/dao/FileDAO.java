@@ -30,4 +30,8 @@ public interface FileDAO {
 
 	public List<FileVO> selectFileList(PaginationInfo<FileVO> paging);
 
+	public FileVO selectFile(FileVO file);
+
+	public int deleteFile(FileVO fVO);
+
 }

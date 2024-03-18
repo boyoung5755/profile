@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="profile.file.dao.FileDAO">
-
+	
+	<select id="selectFile" parameterType="FileVO" resultType="FileVO">
+		SELECT *
+		FROM FILE
+		WHERE FILE_NO = #{fileNo}
+		
+	</select>
+	
+	<delete id="deleteFile" parameterType="FileVO">
+		DELETE 
+		FROM FILE
+		WHERE FILE_NO = #{fileNo}
+	</delete>
+	
+	
 	<insert id="insertProfileFile"  parameterType="FileVO">
 		INSERT INTO file(
 			file_code
@@ -36,29 +50,21 @@
 	
 	
 	
-	<sql id="searchFrag">
-    	<if test="simpleCondition neq null and @org.apache.commons.lang3.StringUtils@isNotBlank(simpleCondition.searchWord)">
-    		<choose>
-    			<when test="simpleCondition.searchType eq 'title'">
-    				WHERE INSTR(FIlE_NAME, #{simpleCondition.searchWord}) > 0
-    			</when>
-    			<otherwise>
-    				WHERE
-    				(
-	   					INSTR(FIlE_NAME, #{simpleCondition.searchWord}) > 0
-    				)
-    			</otherwise>
-    		</choose>
-    	</if>
-	</sql>
-	
 	<select id="selectFileList" parameterType="PaginationInfo" resultType="FileVO">
 		SELECT
-			@rownum:=@rownum+1 as rnum
-			, b.*
-		FROM file b
-		WHERE (@rownum:=0)=0
-		limit #{endRow} OFFSET #{startRow}
+			@ROWNUM:=@ROWNUM+1 AS rnum
+			, B.FILE_CODE
+			, B.FILE_NAME
+			, B.FILE_SN
+			, B.FILE_MIME
+			, B.FILE_SIZE
+			, B.FILE_FANCYSIZE
+			, DATE_FORMAT(B.FILE_RDATE, '%Y-%m-%d') AS changeDate
+			, B.FILE_PATH
+			, B.SHOW_PROFILEIMG
+		FROM FILE B
+		WHERE (@ROWNUM:=0)=0
+		LIMIT #{screenSize} OFFSET #{startRow}
 	</select>
 	
 	<select id="selectTotalRecord" resultType="int" parameterType="PaginationInfo">

@@ -2,6 +2,7 @@ package profile.file.service;
 
 import java.util.List;
 
+import profile.common.ServiceResult;
 import profile.vo.FileVO;
 import profile.vo.PaginationInfo;
 
@@ -28,5 +29,9 @@ public interface FileService {
 	 * @param paging
 	 */
 	List<FileVO> retrieveFileList(PaginationInfo<FileVO> paging);
+
+	FileVO retrieveFile(FileVO file);
+
+	ServiceResult removeFile(FileVO fVO);
 
 }

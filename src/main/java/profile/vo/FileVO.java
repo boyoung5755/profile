@@ -44,6 +44,7 @@ public class FileVO  implements Serializable{
 	private String filePath ; // 파일의 경로 
 	private LocalDateTime fileRdate;
  	private String showProfileimg ;
+ 	private String changeDate;
 	
 	
 	//파일을 지정된 폴더에 저장
