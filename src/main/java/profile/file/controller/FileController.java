@@ -108,12 +108,13 @@ public class FileController {
 	
 
 	@GetMapping("/list")
-	public Map<String,PaginationInfo<FileVO>> boardList(
+	public Map<String,PaginationInfo<FileVO>> fileList(
 			@RequestParam(value = "page", required = false, defaultValue = "1") int currentPage
 			, @RequestParam(value = "listNum", required = false, defaultValue = "5") int listNum
 			, @ModelAttribute("simpleCondition") SearchVO simpleCondition	
 		){
 		
+		log.info(simpleCondition.getSearchType()+"에서 뭘 검색햇누!!@!>>>>>>>>>>>>"+simpleCondition.getSearchWord());
 		Map<String, PaginationInfo<FileVO>> map = new HashMap<String, PaginationInfo<FileVO>>();
 		
 		FileVO file = new FileVO();

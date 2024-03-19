@@ -81,6 +81,7 @@ function fn_fileList(){
 		        if(v.fileNo != null){
 		          trTag +=`
 		            <tr  style="cursor: pointer;">
+		              <td>${v.rnum}</td>
 		              <td onclick="window.location.href='/file/download?fileNo=${v.fileNo}'">${v.fileName}</td>
 		              <td>${v.fileFancysize}</td>
 		              <td>${v.changeDate}</td>
@@ -112,7 +113,7 @@ function fn_fileList(){
 								<div class="col-auto">
 									<select name="searchType" class="form-select"> 
 										<option value="" >전체</option>
-										<option value="title" ${simpleCondition.searchType == "title" ? 'selected' : ''} >파일이름</option>
+										<option value="FILE_NAME" ${simpleCondition.searchType == "FILE_NAME" ? 'selected' : ''} >파일이름</option>
 									</select>
 								</div>
 								<div class="col-auto">

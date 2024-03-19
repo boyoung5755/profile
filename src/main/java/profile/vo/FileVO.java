@@ -46,7 +46,6 @@ public class FileVO  implements Serializable{
  	private String showProfileimg ;
  	private String changeDate;
 	
-	
 	//파일을 지정된 폴더에 저장
 	public void saveTo(File saveFolder) throws IllegalStateException, IOException {
 		if(profileFile != null) {

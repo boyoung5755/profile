@@ -51,20 +51,34 @@
 	
 	
 	<select id="selectFileList" parameterType="PaginationInfo" resultType="FileVO">
-		SELECT
-			@ROWNUM:=@ROWNUM+1 AS rnum
-			, B.FILE_CODE
+		
+		SELECT *
+		FROM
+		(
+		  SELECT 
+		  	@rownum:=@rownum+1  rnum 
+		    , B.FILE_CODE
 			, B.FILE_NAME
 			, B.FILE_SN
 			, B.FILE_MIME
 			, B.FILE_SIZE
 			, B.FILE_FANCYSIZE
-			, DATE_FORMAT(B.FILE_RDATE, '%Y-%m-%d') AS changeDate
+			, DATE_FORMAT(B.FILE_RDATE, '%Y-%m-%d %H:%i:%s') AS changeDate
 			, B.FILE_PATH
 			, B.SHOW_PROFILEIMG
-		FROM FILE B
-		WHERE (@ROWNUM:=0)=0
-		LIMIT #{screenSize} OFFSET #{startRow}
+			, B.FILE_NO 
+		  FROM 
+		      file B, 
+		      (SELECT @ROWNUM := 0) R
+		  WHERE 
+		      1=1
+		  <if test="simpleCondition.searchWord != null and simpleCondition.searchWord != '' and simpleCondition.searchType != ''">
+   			 AND ${simpleCondition.searchType} LIKE CONCAT('%',#{simpleCondition.searchWord},'%')
+		  </if>
+		  ORDER BY B.FILE_RDATE DESC
+		) list
+		<![CDATA[WHERE rnum >= #{startRow, jdbcType=INTEGER} AND rnum <= #{endRow, jdbcType=INTEGER}]]>
+		
 	</select>
 	
 	<select id="selectTotalRecord" resultType="int" parameterType="PaginationInfo">

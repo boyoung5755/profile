@@ -21,9 +21,18 @@
 	
 	<h4 class="mt-4">파일현황</h4>
 
-	<table class="table table-bordered">
+	<table class="table table-bordered" style="text-align: center;">
+		<colgroup>
+			<col width="10%"/>
+			<col width="30%"/>
+			<col width="10%"/>
+			<col width="20%"/>
+			<col width="20%"/>
+			<col width="10%"/>
+		</colgroup>
 		<thead>
 			<tr>
+				<th>NO</th>
 				<th>파일이름</th>
 				<th>파일크기</th>
 				<th>파일등록일</th>
