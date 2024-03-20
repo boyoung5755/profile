@@ -97,17 +97,11 @@ $(document).ready(function(){
   
   //카카오 로그인>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  function loginWithKakao() {
-  Kakao.Auth.authorize({
-    redirectUri: '/kakao/login',
-    });
-   }
-
-
-
 </script>
 </head>
 <body>
+
+  ${url}${msg}
 	<c:if test="${ empty sessionScope.role }">
 		<button id="adminBtn" class="btn btn-secondary mt-3">관리자</button>
     <div class="text-center">
@@ -122,8 +116,9 @@ $(document).ready(function(){
   </div>
   
 	</c:if>
-	<c:if test="${sessionScope.role eq 'admin'}">
-		<span>관리자 로그인중</span>
+	<c:if test="${sessionScope.role eq 'admin' || sessionScope.role eq 'member'}">
+
+		<span>${sessionScope.role eq 'admin'? '관리자 로그인중' : '안녕하세요!'}</span>
 		<button id="logout" class="btn btn-secondary mt-3" onclick="fn_logout()">연결해제</button>
 	</c:if>
 	<button type="button" class="btn btn-secondary mt-3" onclick="location.href='/common/menu'">HOME</button>

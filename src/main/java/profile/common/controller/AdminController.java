@@ -31,7 +31,7 @@ public class AdminController {
 	public Map<String, String> logout(HttpSession session){
 		Map<String, String> map = new HashMap<>();
 		
-		session.removeAttribute("role");
+		//session.removeAttribute("role");
 		session.invalidate();
 		map.put("msg","연결이 해제되었습니다.");
 		return map;

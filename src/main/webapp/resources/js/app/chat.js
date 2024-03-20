@@ -58,7 +58,7 @@ function exit(){
 function showGreeting(message) {
 	console.log("어떤메시지?>>>>>"+message);
 	var str ='<tr><td>' + message + '</td></tr>';
-    $("#greetings").append(str);
+    $('#greetings').append(str);
 }
 
 $(function () {

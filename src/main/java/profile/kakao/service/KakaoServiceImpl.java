@@ -18,6 +18,8 @@ import com.google.gson.JsonParser;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import profile.member.dao.MemberDAO;
+import profile.vo.MemberVO;
 
 /**
  * 프로그램 설명
@@ -41,6 +43,11 @@ public class KakaoServiceImpl implements KakaoService {
 	private String kakaoApiKey	;
 	@Value("#{appInfo.kakaoRedirectUri}")
 	private String kakaoRedirectUri	;
+	
+	private final MemberDAO dao;
+	
+	
+	
 
 	@Override
 	public String getKakaoAccessToken(String code) {
@@ -107,7 +114,8 @@ public class KakaoServiceImpl implements KakaoService {
 	}
 
 	@Override
-	public HashMap<String, Object> getUserInfo(String accessToken) {
+	public MemberVO getUserInfo(String accessToken) {
+		MemberVO mVO = new MemberVO();
 		 HashMap<String, Object> userInfo = new HashMap<>();
 		    String postURL = "https://kapi.kakao.com/v2/user/me";
 
@@ -144,21 +152,35 @@ public class KakaoServiceImpl implements KakaoService {
 		        JsonObject kakaoAccount = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
 		        String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-		        //String email = kakaoAccount.getAsJsonObject().get("email").getAsString();
+		        String email = kakaoAccount.getAsJsonObject().get("email").getAsString();
 		        
 		        log.info("닉네임>>>>>>>>>>>>>>>>"+nickname);
+		        log.info("닉네임>>>>>>>>>>>>>>>>"+email);
 		        
 		        userInfo.put("nickname", nickname);
-		        /*
 		        userInfo.put("email", email);
-				*/
+		        
+		        mVO = checkMember(userInfo);
 		        
 		        br.close();
 
 		    }catch (Exception e){
 		        e.printStackTrace();
 		    }
-		    return userInfo;
+		    return mVO;
 	}
+	
+	
+	
+	//카카오 로그인한 사람이 가입된 사람인지 role이 무엇인지 확인하는 메서드
+	public MemberVO checkMember(HashMap<String, Object> userInfo) {
+		
+		MemberVO mVO = new MemberVO();
+		//디비에서 찾기
+		mVO = dao.selectMember((String) userInfo.get("email"));
+		
+		return mVO;
+	}
+	
 
 }

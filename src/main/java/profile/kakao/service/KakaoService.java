@@ -2,6 +2,8 @@ package profile.kakao.service;
 
 import java.util.HashMap;
 
+import profile.vo.MemberVO;
+
 /**
  * 프로그램 설명
  * @date        : 2024. 3. 19.
@@ -17,6 +19,6 @@ public interface KakaoService {
 
 	String getKakaoAccessToken(String code);
 
-	HashMap<String, Object> getUserInfo(String accessToken);
+	MemberVO getUserInfo(String accessToken);
 
 }

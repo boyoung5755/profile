@@ -61,6 +61,12 @@ public class ViewController {
 	@GetMapping("guestbook")
 	public String guestbookPage(){return "/guestbook/guestbookHome";}
 	
+	@GetMapping("alert")
+	public String alert(){return "/alert";}
+	
+	@GetMapping("member/join")
+	public String memberJoin(){return "/member/join";}
+	
 	@GetMapping("gallery")
 	public String galleryPage(Model model , HttpServletResponse resp){
 		
